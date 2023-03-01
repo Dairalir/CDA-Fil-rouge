@@ -1,3 +1,4 @@
+USE `Ecommerce`;
 INSERT INTO `Fournisseur`(fou_id, fou_nom, fou_adr, fou_vil, fou_cp, fou_pays) VALUES
 (1, 'Dynabox'   , '4413 Graceland Crossing' , 'Tournon-sur-Rhône'   , '07309', 'France'),
 (2, 'Yabox'     , '25 International Street' , 'Saverne'             , '67704', 'France'),
@@ -12,7 +13,7 @@ INSERT INTO `Employé`(emp_id, emp_nom, emp_pre, emp_adr, emp_vil, emp_cp) VALUE
 (4, 'Lethley'   , 'Aggie'   , '3 Sloan Avenue'      , 'Cosne-Cours-sur-Loire'   , '58209'),
 (5, 'Folker'    , 'Donetta' , '7580 Haas Circle'    , 'Paris 19'                , '75171')
 
-INSERT INTO `Client`(cli_id, cli_nom, cli_pre, cli_adr, cli_vil, cli_cp, cli_pays, cli_tel, cli_mail, cli_type, cli_coef, emp_id) VALUES
+INSERT INTO `Client`(cli_id, cli_nom, cli_prenom, cli_adr, cli_vil, cli_cp, cli_pays, cli_tel, cli_mail, cli_type, cli_coef, emp_id) VALUES
 (1, 'Christophe', 'Brody'       , '52474 Eagle Crest Alley' , 'Lyon'            , '69464', 'France' , '5509213300', 'bchristophe0@usda.gov'     , false , 72, 1),
 (2, 'Daffern'   , 'Lorna'       , '4455 Sage Street'        , 'Grenoble'        , '38030', 'France' , '3554927729', 'ldaffern1@t.co'            , true  , 66, 2),
 (3, 'Peirazzi'  , 'Evangeline'  , '48916 Kedzie Plaza'      , 'Berlin'          , '12103', 'Germany', '7679073058', 'epeirazzi2@google.nl'      , true  , 13, 3),

@@ -62,7 +62,7 @@ CREATE TABLE `Produit`(
     pro_prixht  DECIMAL(4,2) NOT NULL,
     pro_pic     VARCHAR(255) NOT NULL,
     pro_stock   INT NOT NULL,
-    prod_act    BOOLEAN,
+    pro_act    BOOLEAN,
     srub_id     INT,
     fou_id      INT,
     PRIMARY KEY(pro_id),
