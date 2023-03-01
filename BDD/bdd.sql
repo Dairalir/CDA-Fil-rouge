@@ -72,19 +72,13 @@ CREATE TABLE `Produit`(
 
 CREATE TABLE `Commande`(
     cmd_id      INT AUTO_INCREMENT NOT NULL,
-    cmd_adr_liv VARCHAR(50) NOT NULL,
-    cmd_adr_fac VARCHAR(50) NOT NULL,
+    pro_id      INT,
+    cli_id      INT,
+    cmd_adr_liv VARCHAR(100) NOT NULL,
+    cmd_adr_fac VARCHAR(100) NOT NULL,
     cmd_date    DATE NOT NULL,
     cmd_qte     INT NOT NULL,
-    cmd_tot_tva_prod VARCHAR(50) NOT NULL,
-    cmd_tva     VARCHAR(50) NOT NULL,
-    cmd_tot_prod_ht DECIMAL(4,2) NOT NULL,
-    cmd_tot_ht  DECIMAL(4,2) NOT NULL,
-    cmd_tot_prod_ttc VARCHAR(50) NOT NULL,
-    cmd_tot_ttc DECIMAL(4,2) NOT NULL,
     com_red     INT,
-    cli_id      INT,
-    pro_id      INT,
     PRIMARY KEY(cmd_id, pro_id),
     FOREIGN KEY (cli_id) REFERENCES `Client`(cli_id),
     FOREIGN KEY (pro_id) REFERENCES `Produit`(pro_id)
@@ -100,10 +94,10 @@ CREATE TABLE Facture(
 
 CREATE TABLE Bon_de_livraison(
     liv_id      INT AUTO_INCREMENT NOT NULL,
-    liv_date    DATE NOT NULL,
-    liv_qte     INT NOT NULL,
     cmd_id      INT,
     pro_id      INT,
+    liv_date    DATE NOT NULL,
+    liv_qte     INT NOT NULL,
     PRIMARY KEY(liv_id, pro_id),
     FOREIGN KEY(pro_id) REFERENCES Produit(pro_id),
     FOREIGN KEY(cmd_id) REFERENCES Commande(cmd_id)
