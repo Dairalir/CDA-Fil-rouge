@@ -39,12 +39,12 @@ INSERT INTO `Produit`(pro_id, pro_nom, pro_desc, pro_prixht, pro_pic, pro_stock,
 (4, 'Produit4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat vel mattis facilisis. Sed pulvinar vestibulum sapien id sagittis.', 69.99, 'pic4.jpg', 600   , true, 1, 4),
 (5, 'Produit5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat vel mattis facilisis. Sed pulvinar vestibulum sapien id sagittis.', 44.99, 'pic5.jpg', 150   , true, 2, 1)
 
-INSERT IGNORE INTO `Commande`(cmd_id, pro_id, cli_id, cmd_adr_liv, cmd_adr_fac, cmd_date, cmd_qte, com_red) VALUES
-(1, 2, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 3, NULL),
-(1, 5, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 5, NULL),
-(2, 1, 5, '7600 Fremont Parkway'   , '7600 Fremont Parkway', '2023-04-26', 1, NULL),
-(3, 3, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 2, NULL),
-(3, 4, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 1, NULL)
+INSERT IGNORE INTO `Commande`(cmd_id, pro_id, cli_id, cmd_adr_liv, cmd_adr_fac, cmd_date, cmd_qte, com_red, com_tva) VALUES
+(1, 2, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 3, NULL, NULL),
+(1, 5, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 5, NULL, NULL),
+(2, 1, 5, '7600 Fremont Parkway'   , '7600 Fremont Parkway', '2023-04-26', 1, NULL, NULL),
+(3, 3, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 2, NULL, NULL),
+(3, 4, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 1, NULL, NULL)
 
 INSERT INTO `Facture`(fac_id, fac_date, cmd_id) VALUES
 (1, '2023-03-13', 1 ),

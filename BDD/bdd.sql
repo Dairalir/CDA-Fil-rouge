@@ -79,6 +79,7 @@ CREATE TABLE `Commande`(
     cmd_date    DATE NOT NULL,
     cmd_qte     INT NOT NULL,
     com_red     INT,
+    com_tva     INT,
     PRIMARY KEY(cmd_id, pro_id),
     FOREIGN KEY (cli_id) REFERENCES `Client`(cli_id),
     FOREIGN KEY (pro_id) REFERENCES `Produit`(pro_id)
