@@ -25,12 +25,12 @@ INSERT INTO `rubrique`(id, name) VALUES
 (2, 'Albums'),
 (3, 'Merch');
 
-INSERT INTO `sous_rubrique`(id, name, rubrique_id) VALUES
-(1, 'Dreamcatcher', 1),
-(2, 'BLACKPINK', 1),
-(3, 'Album studio', 2),
-(4, 'EP', 2),
-(5, 'Lightsicks', 3);
+INSERT INTO `sous_rubrique`(id, name, picture, rubrique_id) VALUES
+(1, 'Dreamcatcher'	,'dreamcatcherlogo.jpeg' 	, 1),
+(2, 'BLACKPINK'		,'blackpinklogo.jpeg'	 	, 1),
+(3, 'Album studio'	,'' 				, 2),
+(4, 'EP' 		,''				, 2),
+(5, 'Lightsicks'	,'' 				, 3);
 
 INSERT INTO `produit`(id, name, description, price_ht, picture, stock, active, sous_rubrique_id, fournisseur_id) VALUES
 (1, 'Produit1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat vel mattis facilisis. Sed pulvinar vestibulum sapien id sagittis.', 19.99, 'pic1.jpg', 500   , true, 4, 2),
