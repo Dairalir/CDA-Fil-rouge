@@ -27,7 +27,7 @@ CREATE TABLE `employe`(
 CREATE TABLE `client`(
     id      	INT AUTO_INCREMENT NOT NULL,
     surname     VARCHAR(50) NOT NULL,
-    name  	    VARCHAR(50) NOT NULL,
+    name  	VARCHAR(50) NOT NULL,
     adress     	VARCHAR(50) NOT NULL,
     city     	VARCHAR(50) NOT NULL,
     postal_code	VARCHAR(50) NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE `rubrique`(
 );
 
 CREATE TABLE `sous_rubrique`(
-    id     	    INT AUTO_INCREMENT NOT NULL,
-    name   	    VARCHAR(50) NOT NULL,
+    id     	INT AUTO_INCREMENT NOT NULL,
+    name   	VARCHAR(50) NOT NULL,
     picture     VARCHAR(255),
     rubrique_id INT,
     PRIMARY KEY(id),
@@ -57,14 +57,14 @@ CREATE TABLE `sous_rubrique`(
 );
 
 CREATE TABLE `produit`(
-    id      	    INT AUTO_INCREMENT NOT NULL,
-    name     	    VARCHAR(50) NOT NULL,
-    description	    VARCHAR(255),
-    price_ht  	    DECIMAL(4,2) NOT NULL,
-    picture         VARCHAR(255) NOT NULL,
-    stock   	    INT NOT NULL,
-    active     	    BOOLEAN,
-    sous_rubrique_id     INT,
+    id      	    	INT AUTO_INCREMENT NOT NULL,
+    name     	    	VARCHAR(50) NOT NULL,
+    description	    	VARCHAR(255),
+    price_ht  	    	DECIMAL(4,2) NOT NULL,
+    picture         	VARCHAR(255) NOT NULL,
+    stock   	    	INT NOT NULL,
+    active     	    	BOOLEAN,
+    sous_rubrique_id    INT,
     fournisseur_id      INT,
     PRIMARY KEY(id),
     FOREIGN KEY(sous_rubrique_id) REFERENCES `sous_rubrique`(id),
@@ -72,15 +72,19 @@ CREATE TABLE `produit`(
 );
 
 CREATE TABLE `commande`(
-    id      		    INT AUTO_INCREMENT NOT NULL,
+    id      		INT AUTO_INCREMENT NOT NULL,
     produit_id      	INT,
-    client_id      	    INT,
+    client_id      	INT,
     shipping_adress 	VARCHAR(100) NOT NULL,
+    shipping_cp		VARCHAR(10) NOT NULL,
+    shipping_city	VARCHAR(50) NOT NULL,
     facturation_adress 	VARCHAR(100) NOT NULL,
-    date    		    DATE NOT NULL,
-    quantity		    INT NOT NULL,
-    reduction		    INT,
-    tva     		    INT,
+    facturation_cp	VARCHAR(10) NOT NULL,
+    facturation_city	VARCHAR(50) NOT NULL,
+    date    		DATE NOT NULL,
+    quantity		INT NOT NULL,
+    reduction		INT,
+    tva     		INT,
     PRIMARY KEY(id, produit_id),
     FOREIGN KEY (client_id) REFERENCES `client`(id),
     FOREIGN KEY (produit_id) REFERENCES `produit`(id)

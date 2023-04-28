@@ -1,57 +1,57 @@
-SELECT SUM(cmd_qte*pro_prixht) AS CA , cmd_date
-FROM Produit
-JOIN Commande ON Produit.pro_id = Commande.pro_id
-WHERE YEAR(cmd_date) = '2023'
-GROUP BY MONTH(cmd_date)
+SELECT SUM(commande.quantity*produit.price_ht) AS CA , commande.date
+FROM produit
+JOIN commande ON produit.id = Commande.produit_id
+WHERE YEAR(commande.date) = '2023'
+GROUP BY MONTH(commande.date)
 ;
 
-SELECT SUM(cmd_qte*pro_prixht) AS CA , fou_nom
-FROM Produit
-JOIN Commande ON Produit.pro_id = Commande.pro_id
-JOIN Fournisseur ON Produit.fou_id = Fournisseur.fou_id
-GROUP BY fou_nom
+SELECT SUM(commande.quantity*produit.price_ht) AS CA , fournisseur.name
+FROM produit
+JOIN commande ON produit.id = Commande.produit_id
+JOIN fournisseur ON produit.fournisseur_id = fournisseur.id
+GROUP BY fournisseur.name
 ;
 
 
-SELECT Produit.pro_id, pro_nom , SUM(cmd_qte), fou_nom
-FROM Produit
-JOIN Commande ON Produit.pro_id = Commande.pro_id
-JOIN Fournisseur ON Produit.fou_id = Fournisseur.fou_id
-WHERE YEAR(cmd_date) = '2023'
-GROUP BY pro_nom
-ORDER BY cmd_qte DESC
+SELECT produit.id, produit.name , SUM(commande.quantity), fournisseur.name
+FROM produit
+JOIN commande ON produit.id = commande.produit_id
+JOIN fournisseur ON produit.fournisseur_id = fournisseur.id
+WHERE YEAR(commande.date) = '2023'
+GROUP BY produit.name
+ORDER BY commande.quantity DESC
 LIMIT 10
 ;
 
-SELECT Produit.pro_id, pro_nom , SUM(cmd_qte*pro_prixht), fou_nom
-FROM Produit
-JOIN Commande ON Produit.pro_id = Commande.pro_id
-JOIN Fournisseur ON Produit.fou_id = Fournisseur.fou_id
-WHERE YEAR(cmd_date) = '2023'
-GROUP BY pro_nom
-ORDER BY cmd_qte DESC
+SELECT produit.id, produit.name , SUM(commande.quantity*produit.price_ht), fournisseur.name
+FROM produit
+JOIN commande ON produit.id = commande.produit_id
+JOIN fournisseur ON produit.fournisseur_id = fournisseur.id
+WHERE YEAR(commande.date) = '2023'
+GROUP BY produit.name
+ORDER BY commande.quantity DESC
 LIMIT 10
 ;
 
-SELECT cli_nom, COUNT(cmd_id) AS nombrecommande, SUM(cmd_qte*pro_prixht) AS CA
-FROM Commande
-JOIN Produit ON Commande.pro_id = Produit.pro_id
-JOIN Client ON Commande.cli_id = Client.cli_id
-GROUP BY cli_nom
+SELECT client.name, COUNT(commande.id) AS nombrecommande, SUM(commande.quantity*produit.price_ht) AS CA
+FROM commande
+JOIN produit ON commande.produit_id = produit.id
+JOIN client ON commande.client_id = client.id
+GROUP BY client.name
 ORDER BY nombrecommande DESC, CA DESC
 LIMIT 10
 ;
 
-SELECT SUM(cmd_qte*pro_prixht) AS CA, cli_type
-FROM Commande
-JOIN Produit ON Commande.pro_id = Produit.pro_id
-JOIN Client ON Commande.cli_id = Client.cli_id
-GROUP BY cli_type
+SELECT SUM(commande.quantity*produit.price_ht) AS CA, client.type
+FROM commande
+JOIN produit ON commande.produit_id = produit.id
+JOIN Client ON commande.client_id = client.id
+GROUP BY client.type
 ;
 
-SELECT COUNT( DISTINCT Commande.cmd_id) as nbcommande
-FROM Commande
-JOIN Bon_de_livraison ON Commande.cmd_id = Bon_de_livraison.cmd_id
-WHERE cmd_date < CURRENT_DATE AND liv_date > CURDATE()
-GROUP BY Commande.cmd_id
+SELECT COUNT( DISTINCT commande.id) as nbcommande
+FROM commande
+JOIN bon_de_livraison ON commande.id = bon_de_livraison.commande_id
+WHERE commande.date < CURRENT_DATE AND bon_de_livraison.date > CURDATE()
+GROUP BY commande.id
 ;

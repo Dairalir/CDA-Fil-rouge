@@ -39,12 +39,12 @@ INSERT INTO `produit`(id, name, description, price_ht, picture, stock, active, s
 (4, 'Produit4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat vel mattis facilisis. Sed pulvinar vestibulum sapien id sagittis.', 69.99, 'pic4.jpg', 600   , true, 1, 4),
 (5, 'Produit5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet erat vel mattis facilisis. Sed pulvinar vestibulum sapien id sagittis.', 44.99, 'pic5.jpg', 150   , true, 2, 1)
 ;
-INSERT IGNORE INTO `commande`(id, produit_id, client_id, shipping_adress, facturation_adress, date, quantity, reduction, tva) VALUES
-(1, 2, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 3, NULL, NULL),
-(1, 5, 1, '808 Graedel Place'      , '808 Graedel Place'   , '2023-03-12', 5, NULL, NULL),
-(2, 1, 5, '7600 Fremont Parkway'   , '7600 Fremont Parkway', '2023-04-26', 1, NULL, NULL),
-(3, 3, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 2, NULL, NULL),
-(3, 4, 4, '41 Mayer Way'           , '9 Moulton Parkway'   , '2023-05-14', 1, NULL, NULL);
+INSERT IGNORE INTO `commande`(id, produit_id, client_id, shipping_adress, shipping_cp, shipping_city, facturation_adress, facturation_cp, facturation_city, date, quantity, reduction, tva) VALUES
+(1, 2, 1, '808 Graedel Place'      ,'','', '808 Graedel Place'   ,'','', '2023-03-12', 3, NULL, NULL),
+(1, 5, 1, '808 Graedel Place'      ,'','', '808 Graedel Place'   ,'','', '2023-03-12', 5, NULL, NULL),
+(2, 1, 5, '7600 Fremont Parkway'   ,'','', '7600 Fremont Parkway','','', '2023-04-26', 1, NULL, NULL),
+(3, 3, 4, '41 Mayer Way'           ,'','', '9 Moulton Parkway'   ,'','', '2023-05-14', 2, NULL, NULL),
+(3, 4, 4, '41 Mayer Way'           ,'','', '9 Moulton Parkway'   ,'','', '2023-05-14', 1, NULL, NULL);
 
 INSERT INTO `facture`(id, date, commande_id) VALUES
 (1, '2023-03-13', 1 ),
