@@ -1,19 +1,19 @@
 DELIMITER |
-CREATE PROCEDURE Commande_en_cours()
+CREATE PROCEDURE commande_en_cours()
     BEGIN
-        SELECT cmd_id
-        FROM Commande
-        JOIN Bon_de_livraison ON Commande.cmd_id = Bon_de_livraison.cmd_id
-        WHERE cmd_date < CURRENT_DATE AND liv_date > CURDATE()
-        GROUP BY Commande.cmd_id;
+        SELECT commande.id
+        FROM commande
+        JOIN bon_de_livraison ON commande.id = bon_de_livraison.commande_id
+        WHERE commande.date < CURRENT_DATE AND bon_de_livraison.date > CURDATE()
+        GROUP BY commande.id;
     END |
 ;
 
 DELIMITER |
-CREATE PROCEDURE Delai_moyen()
+CREATE PROCEDURE delai_moyen()
     BEGIN
-        SELECT AVG(DATEDIFF(liv_date, cmd_date))
-        FROM Commande
-        JOIN Bon_de_livraison ON Commande.cmd_id = Bon_de_livraison.cmd_id;
+        SELECT AVG(DATEDIFF(bon_de_livraison.date, commande.date))
+        FROM commande
+        JOIN bon_de_livraison ON commande.id = Bon_de_livraison.commande_id;
     END |
 ;

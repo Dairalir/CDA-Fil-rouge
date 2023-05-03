@@ -1,13 +1,14 @@
-SELECT SUM(commande.quantity*produit.price_ht) AS CA , commande.date
+-- Active: 1678806883019@@127.0.0.1@3306@ecommerce
+SELECT SUM(commande.quantity*produit.price) AS CA , commande.date
 FROM produit
-JOIN commande ON produit.id = Commande.produit_id
+JOIN commande ON produit.id = commande.produit_id
 WHERE YEAR(commande.date) = '2023'
 GROUP BY MONTH(commande.date)
 ;
 
-SELECT SUM(commande.quantity*produit.price_ht) AS CA , fournisseur.name
+SELECT SUM(commande.quantity*produit.price) AS CA , fournisseur.name
 FROM produit
-JOIN commande ON produit.id = Commande.produit_id
+JOIN commande ON produit.id = commande.produit_id
 JOIN fournisseur ON produit.fournisseur_id = fournisseur.id
 GROUP BY fournisseur.name
 ;
@@ -23,7 +24,7 @@ ORDER BY commande.quantity DESC
 LIMIT 10
 ;
 
-SELECT produit.id, produit.name , SUM(commande.quantity*produit.price_ht), fournisseur.name
+SELECT produit.id, produit.name , SUM(commande.quantity*produit.price), fournisseur.name
 FROM produit
 JOIN commande ON produit.id = commande.produit_id
 JOIN fournisseur ON produit.fournisseur_id = fournisseur.id
@@ -33,7 +34,7 @@ ORDER BY commande.quantity DESC
 LIMIT 10
 ;
 
-SELECT client.name, COUNT(commande.id) AS nombrecommande, SUM(commande.quantity*produit.price_ht) AS CA
+SELECT client.name, COUNT(commande.id) AS nombrecommande, SUM(commande.quantity*produit.price) AS CA
 FROM commande
 JOIN produit ON commande.produit_id = produit.id
 JOIN client ON commande.client_id = client.id
@@ -42,10 +43,10 @@ ORDER BY nombrecommande DESC, CA DESC
 LIMIT 10
 ;
 
-SELECT SUM(commande.quantity*produit.price_ht) AS CA, client.type
+SELECT SUM(commande.quantity*produit.price) AS CA, client.type
 FROM commande
 JOIN produit ON commande.produit_id = produit.id
-JOIN Client ON commande.client_id = client.id
+JOIN client ON commande.client_id = client.id
 GROUP BY client.type
 ;
 

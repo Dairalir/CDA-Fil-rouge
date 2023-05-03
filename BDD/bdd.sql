@@ -34,7 +34,7 @@ CREATE TABLE `client`(
     country    	VARCHAR(50) NOT NULL,
     phone     	VARCHAR(10),
     mail    	VARCHAR(50) NOT NULL,
-    type    	BOOLEAN,
+    pro    	    BOOLEAN,
     coef    	DECIMAL(4,2) NOT NULL,
     employe_id      INT,
     PRIMARY KEY(id),
